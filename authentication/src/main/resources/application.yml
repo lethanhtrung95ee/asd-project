@@ -1,0 +1,7 @@
+keycloak:
+  client-id: ecommerceID
+  secret: 45lJvnGGrwPGNmnPk3LY9ZP3mSO8uD6e
+  auth-url: http://localhost:8180/realms/ecommerce/protocol/openid-connect/token
+
+server:
+  port: 8080

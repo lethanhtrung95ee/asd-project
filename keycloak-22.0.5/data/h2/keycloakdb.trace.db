@@ -1,0 +1,123 @@
+2023-10-24 21:54:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MIGRATION_MODEL" not found (this database is empty); SQL statement:
+SELECT ID, VERSION FROM MIGRATION_MODEL ORDER BY UPDATE_TIME DESC [42104-220]
+2023-10-24 21:55:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOG" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG [42104-220]
+2023-10-24 21:55:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK [42104-220]
+2023-10-24 21:55:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOG" not found; SQL statement:
+SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG [42102-220]
+2023-10-26 15:11:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLTimeoutException: Timeout trying to lock table {0}; SQL statement:
+insert into REALM (ACCESS_CODE_LIFESPAN,LOGIN_LIFESPAN,USER_ACTION_LIFESPAN,ACCESS_TOKEN_LIFESPAN,ACCESS_TOKEN_LIFE_IMPLICIT,ACCOUNT_THEME,ADMIN_EVENTS_DETAILS_ENABLED,ADMIN_EVENTS_ENABLED,ADMIN_THEME,ALLOW_USER_MANAGED_ACCESS,BROWSER_FLOW,CLIENT_AUTH_FLOW,DEFAULT_LOCALE,DEFAULT_ROLE,DIRECT_GRANT_FLOW,DOCKER_AUTH_FLOW,DUPLICATE_EMAILS_ALLOWED,EDIT_USERNAME_ALLOWED,EMAIL_THEME,ENABLED,EVENTS_ENABLED,EVENTS_EXPIRATION,INTERNATIONALIZATION_ENABLED,LOGIN_THEME,LOGIN_WITH_EMAIL_ALLOWED,MASTER_ADMIN_CLIENT,NAME,NOT_BEFORE,OFFLINE_SESSION_IDLE_TIMEOUT,OTP_POLICY_ALG,OTP_POLICY_DIGITS,OTP_POLICY_COUNTER,OTP_POLICY_WINDOW,OTP_POLICY_PERIOD,OTP_POLICY_TYPE,PASSWORD_POLICY,REFRESH_TOKEN_MAX_REUSE,REGISTRATION_ALLOWED,REG_EMAIL_AS_USERNAME,REGISTRATION_FLOW,REMEMBER_ME,RESET_CREDENTIALS_FLOW,RESET_PASSWORD_ALLOWED,REVOKE_REFRESH_TOKEN,SSL_REQUIRED,SSO_IDLE_TIMEOUT,SSO_IDLE_TIMEOUT_REMEMBER_ME,SSO_MAX_LIFESPAN,SSO_MAX_LIFESPAN_REMEMBER_ME,VERIFY_EMAIL,ID) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [50200-220]
+2023-10-26 23:13:47 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@4935b6fa failed; length 12288 at 69632 [2.2.220/2]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.FileStore.storeBuffer(FileStore.java:1528)
+	at org.h2.mvstore.FileStore.lambda$serializeAndStore$3(FileStore.java:1433)
+	at org.h2.mvstore.FileStore.submitOrRun(FileStore.java:1402)
+	at org.h2.mvstore.FileStore.serializeAndStore(FileStore.java:1433)
+	at org.h2.mvstore.FileStore.lambda$storeIt$2(FileStore.java:1377)
+	at org.h2.mvstore.FileStore.submitOrRun(FileStore.java:1402)
+	at org.h2.mvstore.FileStore.storeIt(FileStore.java:1376)
+	at org.h2.mvstore.MVStore.storeNow(MVStore.java:844)
+	at org.h2.mvstore.MVStore.store(MVStore.java:809)
+	at org.h2.mvstore.MVStore.commit(MVStore.java:778)
+	at org.h2.mvstore.MVStore.commit(MVStore.java:770)
+	at org.h2.mvstore.tx.TransactionStore.close(TransactionStore.java:365)
+	at org.h2.mvstore.db.Store.close(Store.java:349)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1263)
+	at org.h2.engine.Database.<init>(Database.java:399)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@4935b6fa failed; length 12288 at 69632 [2.2.220/2]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 34 more
+Caused by: org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@4935b6fa failed; length 12288 at 69632 [2.2.220/2]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.DataUtils.writeFully(DataUtils.java:478)
+	at org.h2.mvstore.SingleFileStore.writeFully(SingleFileStore.java:67)
+	at org.h2.mvstore.SingleFileStore.writeFully(SingleFileStore.java:28)
+	at org.h2.mvstore.RandomAccessStore.writeChunk(RandomAccessStore.java:366)
+	at org.h2.mvstore.RandomAccessStore.writeChunk(RandomAccessStore.java:28)
+	at org.h2.mvstore.FileStore.storeBuffer(FileStore.java:1525)
+	... 28 more
+Caused by: java.nio.channels.ClosedChannelException
+	at java.base/sun.nio.ch.FileChannelImpl.ensureOpen(FileChannelImpl.java:159)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:854)
+	at org.h2.mvstore.DataUtils.writeFully(DataUtils.java:474)
+	... 33 more
+2023-10-27 21:02:38 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@67bcf1d6 failed; length 12288 at 28672 [2.2.220/2]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.FileStore.storeBuffer(FileStore.java:1528)
+	at org.h2.mvstore.FileStore.lambda$serializeAndStore$3(FileStore.java:1433)
+	at org.h2.mvstore.FileStore.submitOrRun(FileStore.java:1402)
+	at org.h2.mvstore.FileStore.serializeAndStore(FileStore.java:1433)
+	at org.h2.mvstore.FileStore.lambda$storeIt$2(FileStore.java:1377)
+	at org.h2.mvstore.FileStore.submitOrRun(FileStore.java:1402)
+	at org.h2.mvstore.FileStore.storeIt(FileStore.java:1376)
+	at org.h2.mvstore.MVStore.storeNow(MVStore.java:844)
+	at org.h2.mvstore.MVStore.store(MVStore.java:809)
+	at org.h2.mvstore.MVStore.commit(MVStore.java:778)
+	at org.h2.mvstore.MVStore.commit(MVStore.java:770)
+	at org.h2.mvstore.tx.TransactionStore.close(TransactionStore.java:365)
+	at org.h2.mvstore.db.Store.close(Store.java:349)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1263)
+	at org.h2.engine.Database.<init>(Database.java:399)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@67bcf1d6 failed; length 12288 at 28672 [2.2.220/2]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 34 more
+Caused by: org.h2.mvstore.MVStoreException: Writing to sun.nio.ch.FileChannelImpl@67bcf1d6 failed; length 12288 at 28672 [2.2.220/2]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.DataUtils.writeFully(DataUtils.java:478)
+	at org.h2.mvstore.SingleFileStore.writeFully(SingleFileStore.java:67)
+	at org.h2.mvstore.SingleFileStore.writeFully(SingleFileStore.java:28)
+	at org.h2.mvstore.RandomAccessStore.writeChunk(RandomAccessStore.java:366)
+	at org.h2.mvstore.RandomAccessStore.writeChunk(RandomAccessStore.java:28)
+	at org.h2.mvstore.FileStore.storeBuffer(FileStore.java:1525)
+	... 28 more
+Caused by: java.nio.channels.ClosedChannelException
+	at java.base/sun.nio.ch.FileChannelImpl.ensureOpen(FileChannelImpl.java:159)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:854)
+	at org.h2.mvstore.DataUtils.writeFully(DataUtils.java:474)
+	... 33 more

@@ -1,0 +1,35 @@
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/ecommerce
+          jwk-set-uri: http://localhost:8180/realms/ecommerce/protocol/openid-connect/certs
+  application:
+    name: ecommerce_service
+  datasource:
+    username: postgres
+    password: 123
+    url: jdbc:postgresql://localhost:5432/postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+    show-sql: true
+    defer-datasource-initialization: true
+
+server:
+  port: 8082
+
+amazonProperties:
+  endpointUrl: https://s3.us-east-1.amazonaws.com
+  accessKey: AKIA243CJBOFXU5ECX6T
+  secretKey: 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
+  bucketName: my-ecommerce-app-asd
+
+redis:
+  host: localhost
+  port: 6379
